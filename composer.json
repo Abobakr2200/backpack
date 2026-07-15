@@ -1,0 +1,32 @@
+{
+    "name": "chat-ag/chat-application",
+    "description": "تطبيق محادثات فورية يشبه واتساب",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Backpack Team",
+            "email": "info@chat-ag.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-mysqli": "*",
+        "ext-json": "*",
+        "ext-fileinfo": "*",
+        "ext-openssl": "*",
+        "minishlink/web-push": "^9.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChatAG\\": "app/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8000",
+        "test": "phpunit"
+    }
+}

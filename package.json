@@ -1,0 +1,24 @@
+{
+  "name": "chat-ag",
+  "version": "1.0.0",
+  "description": "تطبيق محادثات فورية يشبه واتساب",
+  "main": "index.php",
+  "scripts": {
+    "start": "php -S localhost:8000",
+    "dev": "php -S localhost:8000 -t .",
+    "build": "echo 'Build script'",
+    "test": "echo 'Test script'"
+  },
+  "keywords": [
+    "chat",
+    "messaging",
+    "real-time",
+    "php",
+    "mysql"
+  ],
+  "author": "Backpack Team",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.8.0"
+  }
+}

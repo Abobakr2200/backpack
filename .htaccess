@@ -1,0 +1,54 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+
+# Allow access to all files
+<Files "*">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# Protect sensitive files
+<FilesMatch "\.(sql|log|env|git)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# PHP settings
+# ملحوظة: php_flag/php_value لازم تكون جوه IfModule، لأن استضافات كتير
+# (زي InfinityFree) بتشغّل PHP كـ FastCGI/CGI مش كموديول mod_php، وأي
+# php_flag/php_value خارج IfModule هيكسر .htaccess بالكامل ويرجّع
+# 500 Internal Server Error فاضي (ERR_EMPTY_RESPONSE) لكل الموقع.
+<IfModule mod_php.c>
+    php_flag display_errors off
+    php_value upload_max_filesize 50M
+    php_value post_max_size 50M
+    php_value max_execution_time 60
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag display_errors off
+    php_value upload_max_filesize 50M
+    php_value post_max_size 50M
+    php_value max_execution_time 60
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag display_errors off
+    php_value upload_max_filesize 50M
+    php_value post_max_size 50M
+    php_value max_execution_time 60
+</IfModule>
+
+# CORS for API
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Rewrite for clean URLs (optional)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Let existing files and directories through
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+</IfModule>

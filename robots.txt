@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /api/
+Disallow: /config/
+Disallow: /app/
+Disallow: /database/
+Disallow: /public/uploads/
+Allow: /public/
+
+Sitemap: /sitemap.xml
